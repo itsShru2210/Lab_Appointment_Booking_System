@@ -35,9 +35,7 @@ public class AppointmentSystem {
                     case 2:
                         login(sc, connection);
                         break;
-                    case 3:
-                        bookAppointment(sc, connection);
-                        break;
+                   
                     case 4:
                         System.out.println("Exiting system. Goodbye!");
                         return;
@@ -109,6 +107,10 @@ public class AppointmentSystem {
 
             if (rs.next()) {
                 System.out.println("Login successful! Welcome " + rs.getString("name"));
+            
+                bookAppointment(sc, connection);
+                
+                
             } else {
                 System.out.println("Invalid email or password.");
             }
@@ -121,7 +123,9 @@ public class AppointmentSystem {
     // Book appointment
     private static void bookAppointment(Scanner sc, Connection connection) {
         try {
-            System.out.print("Enter Patient Name: ");
+        	 System.out.println("To Book The Appointment: ");
+     
+            System.out.println("Enter Patient Name: ");
             String patientName = sc.nextLine();
 
             System.out.print("Enter Patient Phone: ");
@@ -154,14 +158,24 @@ public class AppointmentSystem {
             System.out.print("Enter Patient Email: ");
             String patientEmail = sc.nextLine();
 
-            System.out.print("Enter Doctor Name: ");
+            System.out.println("Available Doctors: ");
+            System.out.println("1 .Dr.Sham Kumar, Mobile:-1234567895");
+            System.out.println("2 .Dr.Asha, Mobile:-78965384565 ");
+            System.out.println("3 .Dr.Patil ,Mobile:-18530403972");
+            System.out.println("4 .Dr.Sumit Mane, Mobile:-5789204682");
+            System.out.println("Enter Doctor Name: ");
             String doctorName = sc.nextLine();
 
             System.out.print("Enter Doctor Phone: ");
             long doctorPhone = sc.nextLong();
 
             sc.nextLine(); // consume newline
-            System.out.print("Enter Test Name: ");
+            System.out.println("Available Tests: ");
+            System.out.println("1 .X-Ray ");
+            System.out.println("2 .Blood Test ");
+            System.out.println("3 .Urine Test ");
+            System.out.println("4 .Sugar Test ");
+            System.out.println("Enter Test Name: ");
             String testName = sc.nextLine();
 
             // Insert appointment details

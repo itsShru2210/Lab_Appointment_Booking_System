@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnection {
-    static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
-    static final String DB_URL = "jdbc:mysql://localhost:3306/protocoanpc7699ShrushtiNaik?useSSL=false"; // Fixed the URL format
-    static Connection conn;
+	//static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
+static final String DB_URL = "jdbc:mysql://localhost:3306/protocoanpc7699ShrushtiNaik?useSSL=false"; // Fixed the URL format
+    //static Connection conn;
 
     // Database Credentials
     static final String user = "root";
@@ -16,12 +16,12 @@ public class DatabaseConnection {
     public static Connection createC() throws SQLException {
         try {
             // Load the driver explicitly before creating the connection
-            Class.forName(JDBC_DRIVER);
+            Class.forName("com.mysql.cj.jdbc.Driver");
             // Create the connection
-            conn = DriverManager.getConnection(DB_URL, user, password);
+            //conn = DriverManager.getConnection(DB_URL, user, password);
         } catch (ClassNotFoundException e) {
             throw new SQLException("JDBC Driver not found.", e);
         }
-        return conn;
+        return DriverManager.getConnection(DB_URL, user, password);
     }
 }
